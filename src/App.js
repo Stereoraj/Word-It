@@ -43,9 +43,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <h3>Word It</h3> 
-
-       <img src={this.state.imageUrl} alt='random image' width="300px"/>
+        <div className="image-container">
+          <img src={this.state.imageUrl} alt='random image'/>
+          {/* <img className="center-fit" src="https://images.unsplash.com/photo-1566332242436-086c43cfe91e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjY0MTI5fQ" alt='random image'/> */}
+        </div>
+        <div className="input-controls">
+          <h3 className="header">Word It</h3>
+          <h3 className="header-desc">Give your own words to the image to your left.</h3>
+        </div>
       </div>
     );
   }
