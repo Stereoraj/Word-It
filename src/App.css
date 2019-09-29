@@ -5,19 +5,20 @@
 .App {
   display: flex;
   font-family: "Permanent Marker", sans-serif;
+  background: #D9F0FF;
 }
 
 .App > .input-controls {
   width: 50%;
   height: 100%;
-  text-align: center;
+  text-align: center;  
 }
 
 .App > .input-controls > .header {
   /* background: lightgreen; */
   margin: 0;
   font-size: 2rem;
-  color: gray;
+  color: #6F73D2;
   height: fit-content;
   width: 100%;
 }
@@ -25,8 +26,18 @@
 .App > .input-controls > .header-desc {
   margin: 0 auto;
   width: fit-content;
-  border-top: 2px solid lightgreen;
+  border-top: 2px solid #83C9F4;
   font-family: "Metrophobic", sans-serif;
+}
+
+.App > .input-controls .image-desc {
+  font-size: 2rem;
+}
+
+.App > .input-controls .description-match {
+  font-family: "Metrophobic", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .App > .image-container {
@@ -35,7 +46,7 @@
   display: grid;
   height: 100%;
   width: 50%;
-  background: lightgray;
+  /* background: lightskyblue; */
 }
 
 .App > .image-container > img {
@@ -43,4 +54,16 @@
   height: 100vh;
   /* margin: auto; */
   margin: auto;
+}
+
+.blurry-text {
+  text-shadow: 0 0 32px black;
+  color: transparent;
+}
+
+input[type="text"] {
+  width: 90%;
+  padding: 1.2rem 1.2rem;
+  font-size: 1rem;
+  font-family: "Metrophobic", sans-serif; 
 }

@@ -49,7 +49,19 @@ class App extends React.Component {
         </div>
         <div className="input-controls">
           <h3 className="header">Word It</h3>
-          <h3 className="header-desc">Give your own words to the image to your left.</h3>
+          <h3 className="header-desc">Give your own words to the image</h3>
+
+          <div>
+            <div className="image-desc blurry-text"><p>Hot Air Ballons Flying and some extra more</p></div>
+            <p className="description-match">Your description match : <span>N/A</span></p>
+            <input className="input-text" type="text" placeholder="Describe the image" />
+            <div className="submit-btn">
+              submit
+            </div>
+            <div className="next-img-btn">
+              Next Image
+            </div>
+          </div>
         </div>
       </div>
     );
