@@ -8,36 +8,56 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      imageUrl: ''
+      imageUrl: '',
+      imageDesc: '',
     };
 
   }
 
   componentDidMount() {
-    // set up the config for the api auth
+    // fetch the image and the description
+    this.fetchImage();
+  }
+
+  fetchImage = async () => {
+    // here the api key for the config is fetched from the external environment file
+    // the configuration is specification for authentication by unsplash API
     const config = {
       headers: {
         "Authorization": "Client-ID " + process.env.REACT_APP_UNSPLASH_API_KEY
       }
     };
 
-    // make the api call to the unsplash server
-    Axios.get(
-      'https://api.unsplash.com/photos/random/',
-      config
-    ).then(res => {
-      console.log(res)
+    let imageDesc = "";
+    let res = "";
 
-      console.log(res.data.urls.regular);
+    // sometimes the image data doesn't contain the main description and also no alt description
+    // if no any description is available, keep on fetching the data until available
+    while(imageDesc === "") {
 
-      // set the image url state
-      this.setState({
-        imageUrl: res.data.urls.regular
-      });
-    }).catch(err => {
-      console.log(err);
+      try {
+        res = await Axios.get("https://api.unsplash.com/photos/random/", config);
+      }catch(ex) {
+        throw new Error(ex);
+      }
+
+      if(res.data.description === null) {
+        if(res.data.alt_description !== null) {
+          imageDesc = res.data.alt_description;
+          console.log(imageDesc);
+        }
+      } else {
+        imageDesc = res.data.description;
+        console.log("original ", imageDesc);
+      }
+    }
+
+    // Once the image data is loaded with the description,
+    // set the state value to render back
+    this.setState({
+      imageUrl: res.data.urls.regular,
+      imageDesc: imageDesc
     });
-
   }
 
   render() {
@@ -45,14 +65,12 @@ class App extends React.Component {
       <div className="App">
         <div className="image-container">
           <img src={this.state.imageUrl} alt='random image'/>
-          {/* <img className="center-fit" src="https://images.unsplash.com/photo-1566332242436-086c43cfe91e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjY0MTI5fQ" alt='random image'/> */}
         </div>
         <div className="input-controls">
           <h3 className="header">Word It</h3>
           <h3 className="header-desc">Give your own words to the image</h3>
-
           <div>
-            <div className="image-desc blurry-text"><p>Hot Air Ballons Flying and some extra more</p></div>
+            <div className="image-desc blurry-text"><p>{this.state.imageDesc}</p></div>
             <p className="description-match">Your description match : <span>N/A</span></p>
             <input className="input-text" type="text" placeholder="Describe the image" />
             <div className="submit-btn">
