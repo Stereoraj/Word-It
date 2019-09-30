@@ -60,6 +60,10 @@ class App extends React.Component {
     });
   }
 
+  nextImageClickHandler = () => {
+    this.componentDidMount();
+  }
+
   render() {
     return (
       <div className="App">
@@ -76,7 +80,7 @@ class App extends React.Component {
             <div className="submit-btn">
               submit
             </div>
-            <div className="next-img-btn">
+            <div className="next-img-btn" onClick={this.nextImageClickHandler}>
               Next Image
             </div>
           </div>
