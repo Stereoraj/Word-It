@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import StringSimilarity from 'string-similarity';
 
 import './App.css';
 
@@ -11,6 +12,7 @@ class App extends React.Component {
       imageUrl: '',
       imageDesc: '',
       imageDescInput: '',
+      descMatch: null,
     };
 
   }
@@ -67,6 +69,11 @@ class App extends React.Component {
 
   submitBtnHandler = () => {
     console.log(this.state.imageDescInput);
+    let stringSim = StringSimilarity.compareTwoStrings(this.state.imageDesc, this.state.imageDescInput) * 100;
+
+    this.setState({
+      descMatch: stringSim
+    });
   }
 
   descInputChangeHandler = (e) => {
@@ -86,7 +93,7 @@ class App extends React.Component {
           <h3 className="header-desc">Give your own words to the image</h3>
           <div>
             <div className="image-desc blurry-text"><p>{this.state.imageDesc}</p></div>
-            <p className="description-match">Your description match : <span>N/A</span></p>
+            <p className="description-match">Your description match : <span>{this.state.descMatch === null ? "N/A" : this.state.descMatch}</span></p>
             <input className="input-text" type="text" placeholder="Describe the image" value={this.state.imageDescInput} onChange={this.descInputChangeHandler}/>
             <div className="submit-btn" onClick={this.submitBtnHandler}>
               submit
