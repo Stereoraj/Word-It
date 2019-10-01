@@ -65,6 +65,13 @@ class App extends React.Component {
   }
 
   nextImageClickHandler = () => {
+    // reset the state
+    this.setState({
+      imageUrl: '',
+      imageDesc: '',
+      imageDescInput: '',
+      descMatch: null, 
+    });
     this.componentDidMount();
   }
 
@@ -93,12 +100,10 @@ class App extends React.Component {
           <h3 className="header">Word It</h3>
           <h3 className="header-desc">Give your own words to the image</h3>
           <div>
-            <div className="image-desc blurry-text"><p>{this.state.imageDesc}</p></div>
+            <div className={`image-desc ${this.state.descMatch === null ? `blurry-text` : ``}`}><p>{this.state.imageDesc}</p></div>
     <p className="description-match">Your description match : <span>{this.state.descMatch === null ? "N/A" : <AnimatedNumber component="text" value={this.state.descMatch} /> }</span></p>
             <input className="input-text" type="text" placeholder="Describe the image" value={this.state.imageDescInput} onChange={this.descInputChangeHandler}/>
-            <div className="submit-btn" onClick={this.submitBtnHandler}>
-              submit
-            </div>
+            {this.state.descMatch === null ? <div className="submit-btn" onClick={this.submitBtnHandler}>submit</div> : null}
             <div className="next-img-btn" onClick={this.nextImageClickHandler}>
               Next Image
             </div>

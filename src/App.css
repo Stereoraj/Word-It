@@ -74,3 +74,7 @@ input[type="text"] {
   font-size: 1rem;
   font-family: "Metrophobic", sans-serif; 
 }
+
+.submit-btn {
+  cursor: pointer;
+}
