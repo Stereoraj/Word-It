@@ -40,6 +40,13 @@
   font-size: 1.3rem;
 }
 
+.App > .input-controls > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; 
+}
+
 .App > .image-container {
   /* border: 1px solid black; */
   /* margin: 0 auto; */
