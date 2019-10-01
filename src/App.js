@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       imageUrl: '',
       imageDesc: '',
+      imageDescInput: '',
     };
 
   }
@@ -64,6 +65,16 @@ class App extends React.Component {
     this.componentDidMount();
   }
 
+  submitBtnHandler = () => {
+    console.log(this.state.imageDescInput);
+  }
+
+  descInputChangeHandler = (e) => {
+    this.setState({
+      imageDescInput: e.target.value
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -76,8 +87,8 @@ class App extends React.Component {
           <div>
             <div className="image-desc blurry-text"><p>{this.state.imageDesc}</p></div>
             <p className="description-match">Your description match : <span>N/A</span></p>
-            <input className="input-text" type="text" placeholder="Describe the image" />
-            <div className="submit-btn">
+            <input className="input-text" type="text" placeholder="Describe the image" value={this.state.imageDescInput} onChange={this.descInputChangeHandler}/>
+            <div className="submit-btn" onClick={this.submitBtnHandler}>
               submit
             </div>
             <div className="next-img-btn" onClick={this.nextImageClickHandler}>
