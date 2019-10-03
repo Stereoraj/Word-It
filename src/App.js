@@ -3,6 +3,8 @@ import Axios from 'axios';
 import StringSimilarity from 'string-similarity';
 import AnimatedNumber from 'react-animated-number';
 
+import getRandomStrList from './utils/randomString';
+
 import './App.css';
 
 class App extends React.Component {
@@ -12,6 +14,7 @@ class App extends React.Component {
     this.state = {
       imageUrl: '',
       imageDesc: 'Loading Image Description',
+      randomImageDesc: 'Loading Image Description',
       imageDescInput: '',
       descMatch: null,
     };
@@ -60,7 +63,8 @@ class App extends React.Component {
     // set the state value to render back
     this.setState({
       imageUrl: res.data.urls.regular,
-      imageDesc: imageDesc
+      imageDesc: imageDesc,
+      randomImageDesc: getRandomStrList(imageDesc)
     });
   }
 
@@ -100,7 +104,7 @@ class App extends React.Component {
           <h3 className="header">Word It</h3>
           <h3 className="header-desc">Give your own words to the image</h3>
           <div>
-            <div className={`image-desc ${this.state.descMatch === null ? `blurry-text` : `underlined`}`}><p>{this.state.imageDesc}</p></div>
+            <div className={`image-desc ${this.state.descMatch === null ? `blurry-text` : `underlined`}`}><p>{this.state.descMatch === null ? this.state.randomImageDesc : this.state.imageDesc}</p></div>
     <p className="description-match">Your description match : <span>{this.state.descMatch === null ? <span className="blurry-text">"--" </span>: <AnimatedNumber component="text" value={this.state.descMatch} /> }</span></p>
             <input className="input-text" type="text" placeholder="Describe the image" value={this.state.imageDescInput} onChange={this.descInputChangeHandler}/>
             <div className="action-btns">
