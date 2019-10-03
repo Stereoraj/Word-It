@@ -10,8 +10,9 @@
 
 .App > .input-controls {
   width: 50%;
-  height: 100%;
+  /* height: 100%; */
   text-align: center;  
+  /* background: #D9F0FF; */
 }
 
 .App > .input-controls > .header {
@@ -32,6 +33,7 @@
 
 .App > .input-controls .image-desc {
   font-size: 2rem;
+  box-sizing: border-box;
 }
 
 .App > .input-controls .description-match {
@@ -41,10 +43,11 @@
 }
 
 .App > .input-controls > div {
-  height: 100%;
+  height: 85%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; 
+  justify-content: space-around; 
+  align-items: center;
 }
 
 .App > .image-container {
@@ -75,6 +78,37 @@ input[type="text"] {
   font-family: "Metrophobic", sans-serif; 
 }
 
-.submit-btn {
+.submit-btn, .next-btn{
   cursor: pointer;
+  /* width: fit-content; */
+}
+
+.action-btns {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 1.2rem;
+}
+
+.submit-btn {
+  justify-self: flex-start;
+}
+
+.next-btn {
+  justify-self: flex-end;
+}
+
+.submit-btn:hover, .next-btn:hover{
+  text-decoration: #83C9F4 underline; 
+  color: #83C9F4;
+}
+
+/* .next-btn:hover {
+  border: 2px solid yellow;  
+  border-radius: 30%;
+} */
+
+.underlined {
+  text-decoration: yellow underline;
 }
