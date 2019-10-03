@@ -101,7 +101,7 @@ class App extends React.Component {
           <h3 className="header-desc">Give your own words to the image</h3>
           <div>
             <div className={`image-desc ${this.state.descMatch === null ? `blurry-text` : `underlined`}`}><p>{this.state.imageDesc}</p></div>
-    <p className="description-match">Your description match : <span>{this.state.descMatch === null ? "--" : <AnimatedNumber component="text" value={this.state.descMatch} /> }</span></p>
+    <p className="description-match">Your description match : <span>{this.state.descMatch === null ? <span className="blurry-text">"--" </span>: <AnimatedNumber component="text" value={this.state.descMatch} /> }</span></p>
             <input className="input-text" type="text" placeholder="Describe the image" value={this.state.imageDescInput} onChange={this.descInputChangeHandler}/>
             <div className="action-btns">
               {this.state.descMatch === null ? <div className="submit-btn" onClick={this.submitBtnHandler}>submit</div> : null}
