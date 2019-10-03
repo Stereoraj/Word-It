@@ -113,3 +113,17 @@ input[type="text"] {
   text-decoration: yellow underline;
   color: #7681b3;
 }
+
+@media only screen and (max-width: 820px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .App > .image-container {
+    width: 100%;
+  }
+
+  .App > .input-controls {
+    margin: 0 auto;
+  }
+}
