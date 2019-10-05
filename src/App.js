@@ -17,6 +17,11 @@ class App extends React.Component {
       randomImageDesc: 'Loading Image Description',
       imageDescInput: '',
       descMatch: null,
+      photographer: {
+        fullName: '',
+        link: ''
+      },
+      imagePlatformLink: 'https://unsplash.com/'
     };
 
   }
@@ -57,12 +62,19 @@ class App extends React.Component {
       }
     }
 
+    console.log(res.data.user.first_name + " " + res.data.user.last_name);
+    console.log(res.data.user.links.html);
+
     // Once the image data is loaded with the description,
     // set the state value to render back
     this.setState({
       imageUrl: res.data.urls.regular,
       imageDesc: imageDesc,
-      randomImageDesc: getRandomStrList(imageDesc)
+      randomImageDesc: getRandomStrList(imageDesc),
+      photographer: {
+        fullName: (res.data.user.first_name === null ? "" : res.data.user.first_name) + " " + (res.data.user.last_name === null ? "" : res.data.user.last_name),
+        link: res.data.user.links.html 
+      }
     });
   }
 
@@ -78,7 +90,6 @@ class App extends React.Component {
   }
 
   submitBtnHandler = () => {
-    console.log(this.state.imageDescInput);
     let stringSim = (StringSimilarity.compareTwoStrings(this.state.imageDesc.toLowerCase(), this.state.imageDescInput.toLowerCase()) * 100).toFixed(2);
 
     this.setState({
@@ -97,6 +108,7 @@ class App extends React.Component {
       <div className="App">
         <div className="image-container">
           <img src={this.state.imageUrl} alt='random image'/>
+          { this.state.imageUrl !== '' ? <span>Photo by <a href={this.state.photographer.link} target="_blank">{this.state.photographer.fullName}</a> on <a href={this.state.imagePlatformLink} target="_blank">Unsplash</a></span> : null }
         </div>
         <div className="input-controls">
 
