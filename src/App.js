@@ -108,7 +108,7 @@ class App extends React.Component {
       <div className="App">
         <div className="image-container">
           <img src={this.state.imageUrl} alt='random image'/>
-          <span>Photo by <a href={this.state.photographer.link} target="_blank">{this.state.photographer.fullName}</a> on <a href={this.state.imagePlatformLink} target="_blank">Unsplash</a></span>
+          { this.state.imageUrl !== '' ? <span>Photo by <a href={this.state.photographer.link} target="_blank">{this.state.photographer.fullName}</a> on <a href={this.state.imagePlatformLink} target="_blank">Unsplash</a></span> : null }
         </div>
         <div className="input-controls">
 
