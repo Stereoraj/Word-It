@@ -89,6 +89,7 @@ input[type="text"] {
   width: 100%;
   justify-content: space-around;
   font-size: 1.2rem;
+  color: #6F73D2;
 }
 
 .submit-btn {
@@ -97,6 +98,7 @@ input[type="text"] {
 
 .next-btn {
   justify-self: flex-end;
+  color: #7681b3;
 }
 
 .submit-btn:hover, .next-btn:hover{
@@ -124,6 +126,11 @@ input[type="text"] {
   }
 
   .App > .input-controls {
+    width: 80%;
     margin: 0 auto;
+  }
+
+  .action-btns {
+    justify-content: space-between;
   }
 }
