@@ -101,18 +101,42 @@ class App extends React.Component {
           <img src={this.state.imageUrl} alt='random image'/>
         </div>
         <div className="input-controls">
-          <h3 className="header">Word It</h3>
+
+          <h3 className="header">
+            <span>W</span>
+            <span>o</span>
+            <span>r</span>
+            <span>d</span>
+            <span> </span>
+            <span>I</span>
+            <span>t</span>
+          </h3>
+
           <h3 className="header-desc">Give your own words to the image</h3>
+
           <div>
-            <div className={`image-desc ${this.state.descMatch === null ? `blurry-text` : `underlined`}`}><p>{this.state.descMatch === null ? this.state.randomImageDesc : this.state.imageDesc}</p></div>
-    <p className="description-match">Your description match : <span>{this.state.descMatch === null ? <span className="blurry-text">"--" </span>: <AnimatedNumber component="text" value={this.state.descMatch} /> }</span></p>
+            <div className={`image-desc ${this.state.descMatch === null ? `blurry-text` : `underlined`}`}>
+              <p>{this.state.descMatch === null ? this.state.randomImageDesc : this.state.imageDesc}</p>
+            </div>
+
+            <p className="description-match">Your description match : 
+              <span>{this.state.descMatch === null ? 
+                    <span className="blurry-text">"--" </span> : 
+                    <AnimatedNumber component="text" value={this.state.descMatch} /> }
+              </span>
+            </p>
+
             <input className="input-text" type="text" placeholder="Describe the image" value={this.state.imageDescInput} onChange={this.descInputChangeHandler}/>
+            
             <div className="action-btns">
-              {this.state.descMatch === null ? <div className="submit-btn" onClick={this.submitBtnHandler}>submit</div> : null}
+              {this.state.descMatch === null ? 
+                <div className="submit-btn" onClick={this.submitBtnHandler}>submit</div> : 
+                null}
               <div className="next-btn" onClick={this.nextImageClickHandler}>
                 Next Image
               </div>
             </div>
+
           </div>
         </div>
       </div>
