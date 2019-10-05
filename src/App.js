@@ -51,11 +51,9 @@ class App extends React.Component {
       if(res.data.description === null) {
         if(res.data.alt_description !== null) {
           imageDesc = res.data.alt_description;
-          console.log(imageDesc);
         }
       } else {
         imageDesc = res.data.description;
-        console.log("original ", imageDesc);
       }
     }
 
@@ -119,7 +117,7 @@ class App extends React.Component {
               <p>{this.state.descMatch === null ? this.state.randomImageDesc : this.state.imageDesc}</p>
             </div>
 
-            <p className="description-match">Your description match : 
+            <p className="description-match">Your description match :&nbsp; 
               <span>{this.state.descMatch === null ? 
                     <span className="blurry-text">"--" </span> : 
                     <AnimatedNumber component="text" value={this.state.descMatch} /> }

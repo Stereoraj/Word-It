@@ -174,9 +174,23 @@ input[type="text"] {
   color: #83C9F4;
 }
 
+/* blurred out animation for the image description */
+
+@keyframes bluroutFunc {
+  from {
+    text-shadow: 0 0 32px black;
+    color: transparent; 
+  }
+  to {
+    text-decoration: yellow underline;
+    color: #7681b3;
+  }
+}
+
 .underlined {
-  text-decoration: yellow underline;
-  color: #7681b3;
+  /* text-decoration: yellow underline;
+  color: #7681b3; */
+  animation: bluroutFunc 1s 0s forwards;
 }
 
 @media only screen and (max-width: 820px) {
