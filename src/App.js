@@ -72,7 +72,7 @@ class App extends React.Component {
       imageDesc: imageDesc,
       randomImageDesc: getRandomStrList(imageDesc),
       photographer: {
-        fullName: res.data.user.first_name + " " + res.data.user.last_name,
+        fullName: (res.data.user.first_name === null ? "" : res.data.user.first_name) + " " + (res.data.user.last_name === null ? "" : res.data.user.last_name),
         link: res.data.user.links.html 
       }
     });
